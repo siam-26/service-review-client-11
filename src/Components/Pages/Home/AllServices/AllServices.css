@@ -1,0 +1,11 @@
+.allServices-btn {
+    border: 1px solid #f29f05;
+    color: #f29f05;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.allServices-btn:hover {
+    background-color: #f0a313;
+    color: white;
+}
