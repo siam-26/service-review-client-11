@@ -6,3 +6,11 @@
 .serviceDetails-h {
     color: #f29f05;
 }
+
+.review-container {
+
+    background-color: #fdc933;
+    border-radius: 36px;
+    filter: brightness(75%);
+
+}
