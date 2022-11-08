@@ -23,13 +23,14 @@ const Navbar = () => {
                             </ul>
                         </li>
                         <li><Link>Item 3</Link></li>
+
                     </ul>
                 </div>
                 <Link className="text-xl">HMAS-Food</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link>Item 1</Link></li>
+                    <li><Link to='/'>Home</Link></li>
                     <li tabIndex={0}>
                         <Link>
                             Parent
@@ -41,10 +42,11 @@ const Navbar = () => {
                         </ul>
                     </li>
                     <li><Link>Item 3</Link></li>
+                    <li><Link to='/blog'>Blogs</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link className="login-logout font-semibold">Get started</Link>
+                <Link to='/login' className="login-logout font-semibold">Log in</Link>
             </div>
         </div>
     );
