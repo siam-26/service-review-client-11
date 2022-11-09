@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Blog from "../Pages/Blog/Blog";
-import AllServices from "../Pages/Home/AllServices/AllServices";
+import AllServicesMain from "../Pages/Home/AllServices/AllServicesMain";
 import ServiceDetails from "../Pages/Home/AllServices/ServiceDetails";
 import Home from "../Pages/Home/Home";
 import Login from "../Shared/Login/Login";
@@ -18,8 +18,9 @@ const router = createBrowserRouter([
                 loader: async () => fetch('http://localhost:5000/services')
             },
             {
-                path: '/allservices',
-                element: <AllServices></AllServices>
+                path: '/allservicess',
+                element: <AllServicesMain></AllServicesMain>,
+                loader: async () => fetch('http://localhost:5000/allServices')
             },
             {
                 path: '/serviceDetails',
@@ -37,6 +38,7 @@ const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             }
+
         ]
     }
 ])
