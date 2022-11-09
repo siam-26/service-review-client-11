@@ -3,6 +3,7 @@ import './Home.css';
 import banner from '../../Assets/Images/Banner/banner.png'
 import HomeServicesShortDetails from './HomeServicesShortDetails/HomeServicesShortDetails';
 import { Link, useLoaderData } from 'react-router-dom';
+import PopularityStatistics from './HomeServicesShortDetails/PopularityStatistics/PopularityStatistics';
 
 const Home = () => {
     const servicesHome = useLoaderData();
@@ -31,10 +32,14 @@ const Home = () => {
                 }
 
             </div>
-            <div className='btn-div pb-12'>
+            <div className='btn-div pb-16 pt-24'>
                 <Link to='/allservicess'>
                     <button className="seeAll-btn font-bold mt-8">See All</button>
                 </Link>
+            </div>
+
+            <div className=' pb-36 ml-4'>
+                <PopularityStatistics></PopularityStatistics>
             </div>
         </div>
     );
