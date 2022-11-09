@@ -3,14 +3,14 @@
     line-height: 30px;
 }
 
-.serviceDetails-h {
-    color: #f29f05;
-}
-
 .review-container {
 
     background-color: #fdc933;
     border-radius: 36px;
     filter: brightness(75%);
 
+}
+
+.serviceDetails-img {
+    filter: brightness(75%);
 }

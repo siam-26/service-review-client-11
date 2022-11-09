@@ -20,12 +20,18 @@ const router = createBrowserRouter([
             {
                 path: '/allservicess',
                 element: <AllServicesMain></AllServicesMain>,
-                loader: async () => fetch('http://localhost:5000/allServices')
-            },
+                loader: async () => fetch('http://localhost:5000/allServices'),
+
+            }
+            ,
             {
-                path: '/serviceDetails',
-                element: <ServiceDetails></ServiceDetails>
+                path: '/allservices/:id',
+                element: <ServiceDetails></ServiceDetails>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/allServices/${params.id}`)
+                }
             },
+
             {
                 path: '/blog',
                 element: <Blog></Blog>

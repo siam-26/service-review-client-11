@@ -1,9 +1,12 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './ServicesAll.css';
 
 const ServicesAll = ({ allservice }) => {
-    const { img, service_name, description, price } = allservice;
+
+    const { _id, img, service_name, description, price } = allservice
+
+
+
     return (
         <div>
 
@@ -20,7 +23,7 @@ const ServicesAll = ({ allservice }) => {
                         <p className='text-justify servicesAllPara font-semibold'>{description}</p>
 
                         <div>
-                            <Link to='/serviceDetails'>
+                            <Link to={`/allservices/${_id}`}>
                                 <button className="allServices-btn font-bold mt-8">view details</button>
                             </Link>
                         </div>
