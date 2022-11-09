@@ -1,4 +1,5 @@
 import React from 'react';
+import MyReview from './MyReview/MyReview';
 import Review from './Review';
 import './serviceDetails.css'
 
@@ -32,13 +33,12 @@ const ServiceDetails = () => {
                 </div>
 
 
-                {/* <div>
-                    <Link to='/serviceDetails'>
-                        <button className="allServices-btn font-bold mt-8">view details</button>
-                    </Link>
-                </div> */}
+
             </div>
 
+            <div>
+                <MyReview></MyReview>
+            </div>
 
 
         </div>
