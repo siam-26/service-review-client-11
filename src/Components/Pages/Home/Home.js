@@ -4,6 +4,7 @@ import banner from '../../Assets/Images/Banner/banner.png'
 import HomeServicesShortDetails from './HomeServicesShortDetails/HomeServicesShortDetails';
 import { Link, useLoaderData } from 'react-router-dom';
 import PopularityStatistics from './HomeServicesShortDetails/PopularityStatistics/PopularityStatistics';
+import GetMenuEveryday from './HomeServicesShortDetails/GetMenuEveryday/GetMenuEveryday';
 
 const Home = () => {
     const servicesHome = useLoaderData();
@@ -38,8 +39,14 @@ const Home = () => {
                 </Link>
             </div>
 
+
+
             <div className=' pb-36 ml-4'>
                 <PopularityStatistics></PopularityStatistics>
+            </div>
+
+            <div className='pb-36 pt-10'>
+                <GetMenuEveryday></GetMenuEveryday>
             </div>
         </div>
     );
