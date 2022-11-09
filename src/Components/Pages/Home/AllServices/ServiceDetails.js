@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../../../../Hook/useTitle';
 import MyReview from './MyReview/MyReview';
 import Review from './Review';
 import './serviceDetails.css'
@@ -7,6 +8,7 @@ import './serviceDetails.css'
 
 const ServiceDetails = () => {
     const { img, service_name, price, description } = useLoaderData();
+    useTitle('Service-Details');
 
     return (
         <div>

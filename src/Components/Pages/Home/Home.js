@@ -5,9 +5,11 @@ import HomeServicesShortDetails from './HomeServicesShortDetails/HomeServicesSho
 import { Link, useLoaderData } from 'react-router-dom';
 import PopularityStatistics from './HomeServicesShortDetails/PopularityStatistics/PopularityStatistics';
 import GetMenuEveryday from './HomeServicesShortDetails/GetMenuEveryday/GetMenuEveryday';
+import useTitle from '../../../Hook/useTitle';
 
 const Home = () => {
     const servicesHome = useLoaderData();
+    useTitle('Home');
 
     return (
         <div>
