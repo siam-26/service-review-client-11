@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import useTitle from '../../../Hook/useTitle';
@@ -6,7 +7,18 @@ import './Register.css';
 
 const Register = () => {
     useTitle('Register');
-    const { createEmailPassword } = useContext(AuthContext);
+    const { createEmailPassword, googleLogIn } = useContext(AuthContext);
+    const provider = new GoogleAuthProvider();
+
+    //handleGoogleLogIn
+    const handleGoogleLogin = () => {
+        googleLogIn(provider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
+    }
 
     const create_Email_Password = event => {
         event.preventDefault();
@@ -64,6 +76,8 @@ const Register = () => {
                             <button className="btn btn-primary login-btn">Register now</button>
                         </div>
                         <p className="py-6 login-text font-semibold">Already have an account? <Link to='/login'><span className='register-span font-semibold'>login</span></Link></p>
+
+                        <button className='text-center' onClick={handleGoogleLogin}>Google</button>
                     </form>
                 </div>
             </div>

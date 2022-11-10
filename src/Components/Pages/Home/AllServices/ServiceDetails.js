@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../../../Hook/useTitle';
+import { AuthContext } from '../../../Contexts/UserContext';
 import MyReview from './MyReview/MyReview';
 import Review from './Review';
 import './serviceDetails.css'
 
 
 const ServiceDetails = () => {
-    const { img, service_name, price, description } = useLoaderData();
+    const { _id, img, service_name, price, description } = useLoaderData();
     useTitle('Service-Details');
+    const { user } = useContext(AuthContext);
+
+    //Create Review to send DB
+    const handleReview = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const email = user?.email || 'unregistered';
+        const message = form.message.value;
+
+        const reviews = {
+            service: _id,
+            service_name: service_name,
+            customer: name,
+            img,
+            email,
+            message
+        }
+        fetch('http://localhost:5000/reviews', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(reviews)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    }
 
     return (
         <div>
@@ -41,7 +71,24 @@ const ServiceDetails = () => {
                 <div className='review-container h-auto w-full'>
                     <Review></Review>
                 </div>
-                <MyReview></MyReview>
+                <MyReview handleReview={handleReview}></MyReview>
+
+                {/* <div>
+                    <form onSubmit={handleReview}>
+                        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+                            <input type="text" name="name" placeholder="name" className="input input-bordered w-full" />
+                            <input type="email" name="email" placeholder="email" className="input input-bordered w-full" defaultValue={user?.email} />
+
+                        </div>
+                        <div className="form-control">
+
+                            <textarea name="message" className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+
+
+                        </div>
+                        <button type="submit">submit</button>
+                    </form>
+                </div> */}
             </div>
         </div>
     );

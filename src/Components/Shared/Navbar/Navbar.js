@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/UserContext';
 import './Navbar.css';
 
 const Navbar = () => {
+    const { logOut, user } = useContext(AuthContext);
+
+    //logOut
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -31,22 +45,26 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to='/'>Home</Link></li>
+
                     <li tabIndex={0}>
                         <Link>
-                            Parent
-                            <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>
+                            MyReviews
+
                         </Link>
-                        <ul className="p-2">
-                            <li><Link>Submenu 1</Link></li>
-                            <li><Link>Submenu 2</Link></li>
-                        </ul>
+
                     </li>
-                    <li><Link>Item 3</Link></li>
+                    <li><Link>Add Service</Link></li>
                     <li><Link to='/blog'>Blogs</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login' className="login-logout font-semibold mr-10">Log in</Link>
+                {
+                    user?.email ?
+                        <Link to='/' onClick={handleLogOut} className="login-logout font-semibold mr-10">Log out</Link>
+                        :
+                        <Link to='/login' className="login-logout font-semibold mr-10">Log in</Link>
+                }
+
             </div>
         </div>
     );

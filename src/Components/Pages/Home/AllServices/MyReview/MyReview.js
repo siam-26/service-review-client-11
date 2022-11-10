@@ -1,22 +1,26 @@
-import React from 'react';
-import './MyReview.css';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../../Contexts/UserContext';
 
-const MyReview = () => {
+const MyReview = ({ handleReview }) => {
+    const { user } = useContext(AuthContext);
     return (
-        <div className="form-control w-full max-w-xs">
+        <div>
+            <div>
+                <form onSubmit={handleReview}>
+                    <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
+                        <input type="text" name="name" placeholder="name" className="input input-bordered w-full" />
+                        <input type="email" name="email" placeholder="email" className="input input-bordered w-full" defaultValue={user?.email} />
 
-            <input type="text" placeholder="Your name" className="input input-bordered w-full max-w-xs" />
-            <input type="text" placeholder="Your photo" className="input input-bordered w-full max-w-xs" />
-            <input type="text" placeholder="Your email" className="input input-bordered w-full max-w-xs" />
+                    </div>
+                    <div className="form-control">
+
+                        <textarea name="message" className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
 
 
-
-            <textarea className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
-
-            <button className="btn btn-warning">Warning</button>
-
-
-
+                    </div>
+                    <button type="submit">submit</button>
+                </form>
+            </div>
         </div>
     );
 };
