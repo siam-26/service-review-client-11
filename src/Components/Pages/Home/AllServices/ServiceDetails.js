@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import useTitle from '../../../../Hook/useTitle';
 import { AuthContext } from '../../../Contexts/UserContext';
@@ -8,6 +8,14 @@ import './serviceDetails.css'
 
 
 const ServiceDetails = () => {
+    const [showReviews, setShowReviews] = useState([]);
+
+    useEffect(() => {
+        fetch('https://hmas-food-server.vercel.app/reviews')
+            .then(res => res.json())
+            .then(data => setShowReviews(data));
+    }, [])
+
     const { _id, img, service_name, price, description } = useLoaderData();
     useTitle('Service-Details');
     const { user } = useContext(AuthContext);
@@ -28,7 +36,7 @@ const ServiceDetails = () => {
             email,
             message
         }
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://hmas-food-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,7 +44,13 @@ const ServiceDetails = () => {
             body: JSON.stringify(reviews)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data)
+                if (data.acknowledged) {
+                    alert('Ordered placed successfully...');
+                    form.reset();
+                }
+            })
             .catch(error => console.error(error));
     }
 
@@ -67,11 +81,25 @@ const ServiceDetails = () => {
 
             </div>
             <div>
-                <h1 className='mt-12 mb-12 text-5xl font-bold review-heading'>People's Review</h1>
+                <h1 className='mt-12 mb-12 text-5xl font-bold review-heading pl-24'>People's Review</h1>
                 <div className='review-container h-auto w-full'>
-                    <Review></Review>
+
+                    {
+                        showReviews.map(sr => <Review
+                            key={sr._id}
+                            sr={sr}
+                        >
+
+                        </Review>)
+                    }
                 </div>
-                <MyReview handleReview={handleReview}></MyReview>
+                <div>
+                    {
+                        <MyReview></MyReview>
+                    }
+
+                </div>
+
 
                 {/* <div>
                     <form onSubmit={handleReview}>

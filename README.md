@@ -69,3 +69,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # b6a11-service-review-client-side-siam-26
+
+# Project Name: HMAS-Food
+# Project site Link: https://hmas-food-client.web.app/
+# features and functionalities:
+• Added 3 services on Home page.
+• Added peoples review's.
+• Added login and register field.
+• Authenticate in login and register field.
+• Added image full screen feature after click an image.

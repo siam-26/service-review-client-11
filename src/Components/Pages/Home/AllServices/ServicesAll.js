@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import './ServicesAll.css';
 
 const ServicesAll = ({ allservice }) => {
@@ -15,7 +17,12 @@ const ServicesAll = ({ allservice }) => {
                 <div className="card w-96 bg-base-100 shadow-xl gap-8 mb-8 ml-5">
 
                     <figure className="px-10 pt-10">
-                        <img src={img} alt="" className="w-44 h-44 rounded-xl" />
+
+                        <PhotoProvider>
+                            <PhotoView src={img}>
+                                <img src={img} alt="" className="w-44 h-44 rounded-xl" />
+                            </PhotoView>
+                        </PhotoProvider>
                     </figure>
                     <div className="card-body items-center text-center body">
                         <h2 className="card-title name">{service_name}</h2>
@@ -23,7 +30,7 @@ const ServicesAll = ({ allservice }) => {
                         <p className='text-justify servicesAllPara font-semibold'>{description}</p>
 
                         <div>
-                            <Link to={`/allservices/${_id}`}>
+                            <Link to={`/services/${_id}`}>
                                 <button className="allServices-btn font-bold mt-8">view details</button>
                             </Link>
                         </div>

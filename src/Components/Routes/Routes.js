@@ -5,6 +5,7 @@ import AllServicesMain from "../Pages/Home/AllServices/AllServicesMain";
 import ServiceDetails from "../Pages/Home/AllServices/ServiceDetails";
 import Home from "../Pages/Home/Home";
 import Login from "../Shared/Login/Login";
+import MySpecificReviews from "../Shared/Navbar/MySpecificReviews/MySpecificReviews";
 import Register from "../Shared/Register/Register";
 
 const router = createBrowserRouter([
@@ -15,20 +16,20 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: async () => fetch('http://localhost:5000/services')
+                loader: async () => fetch('https://hmas-food-server.vercel.app/services')
             },
             {
-                path: '/allservicess',
+                path: '/services',
                 element: <AllServicesMain></AllServicesMain>,
-                loader: async () => fetch('http://localhost:5000/allServices'),
+                loader: async () => fetch('https://hmas-food-server.vercel.app/allServices'),
 
             }
             ,
             {
-                path: '/allservices/:id',
+                path: '/services/:id',
                 element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) => {
-                    return fetch(`http://localhost:5000/allServices/${params.id}`)
+                    return fetch(`https://hmas-food-server.vercel.app/allServices/${params.id}`)
                 }
             },
 
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/reviewsMy',
+                element: <MySpecificReviews></MySpecificReviews>
             }
 
         ]

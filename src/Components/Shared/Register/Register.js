@@ -7,7 +7,7 @@ import './Register.css';
 
 const Register = () => {
     useTitle('Register');
-    const { createEmailPassword, googleLogIn } = useContext(AuthContext);
+    const { createEmailPassword, googleLogIn, updateProfileUpdate } = useContext(AuthContext);
     const provider = new GoogleAuthProvider();
 
     //handleGoogleLogIn
@@ -24,6 +24,7 @@ const Register = () => {
         event.preventDefault();
         const form = event.target;
         const name = form.name.value;
+        const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -32,8 +33,25 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                updateUserProfileHandler(name, photo)
             })
             .catch(error => console.error(error));
+
+
+        //Update user profile
+        const updateUserProfileHandler = (name, photo) => {
+            const profile = {
+                displayName: name,
+                photoURL: photo
+            }
+            updateProfileUpdate(profile)
+                .then(() => {
+
+                })
+                .catch(error => {
+
+                })
+        }
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -77,7 +95,9 @@ const Register = () => {
                         </div>
                         <p className="py-6 login-text font-semibold">Already have an account? <Link to='/login'><span className='register-span font-semibold'>login</span></Link></p>
 
-                        <button className='text-center' onClick={handleGoogleLogin}>Google</button>
+                        <button className='btn btn-primary login-btn' onClick={handleGoogleLogin}>Google</button>
+
+
                     </form>
                 </div>
             </div>

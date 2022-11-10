@@ -1,4 +1,4 @@
-import React from 'react';
+import ClipLoader from "react-spinners/ClipLoader";
 import './Home.css';
 import banner from '../../Assets/Images/Banner/banner.png'
 import HomeServicesShortDetails from './HomeServicesShortDetails/HomeServicesShortDetails';
@@ -6,8 +6,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import PopularityStatistics from './HomeServicesShortDetails/PopularityStatistics/PopularityStatistics';
 import GetMenuEveryday from './HomeServicesShortDetails/GetMenuEveryday/GetMenuEveryday';
 import useTitle from '../../../Hook/useTitle';
+import { useState } from "react";
+
 
 const Home = () => {
+    const [loading, setLoading] = useState(false);
     const servicesHome = useLoaderData();
     useTitle('Home');
 
@@ -27,6 +30,7 @@ const Home = () => {
             <h1 className='text-center text-4xl mt-20 ml-4 pb-4'>Our Services</h1>
             <div className='services-div pl-12 grid grid-cols-3'>
 
+
                 {
                     servicesHome.products.map(service => <HomeServicesShortDetails
                         key={service._id}
@@ -36,7 +40,7 @@ const Home = () => {
 
             </div>
             <div className='btn-div pb-16 pt-24'>
-                <Link to='/allservicess'>
+                <Link to='/services'>
                     <button className="seeAll-btn font-bold mt-8">See All</button>
                 </Link>
             </div>

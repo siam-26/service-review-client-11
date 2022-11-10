@@ -62,7 +62,8 @@ const Login = () => {
                         </div>
                         <p className="py-6 login-text font-semibold">New in HMAS-Food? <Link to='/register'><span className='register-span font-semibold'>Register now</span></Link></p>
 
-                        <button className='text-center' onClick={handleGoogleLogin}>Google</button>
+
+                        <button className='btn btn-primary login-btn' onClick={handleGoogleLogin}>Google</button>
                     </form>
                 </div>
             </div>
